@@ -5,3 +5,8 @@ linux-pixel-docs-4.0.4-1-x86_64.pkg.tar.xz
 linux-pixel-headers-4.0.4-1-x86_64.pkg.tar.xz
 linux.install.pkg
 pkg
+linux-4.1-rc3
+linux-pix2-4.1rc3-1-x86_64.pkg.tar.xz linux-pix2-docs-4.1rc3-1-x86_64.pkg.tar.xz linux-pix2-headers-4.1rc3-1-x86_64.pkg.tar.xz
+linux-pix2-4.1rc3-1-x86_64.pkg.tar.xz
+linux-pix2-docs-4.1rc3-1-x86_64.pkg.tar.xz
+linux-pix2-headers-4.1rc3-1-x86_64.pkg.tar.xz

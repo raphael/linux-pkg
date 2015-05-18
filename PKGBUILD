@@ -2,10 +2,10 @@
 # Maintainer: Tobias Powalowski <tpowa@archlinux.org>
 # Maintainer: Thomas Baechler <thomas@archlinux.org>
 
-pkgbase=linux-pixel
+pkgbase=linux-pix2
 #pkgbase=linux               # Build stock -ARCH kernel
-_srcname=linux-4.0.4
-pkgver=4.0.4
+_srcname=linux-4.1-rc3
+pkgver=4.1rc3
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -18,9 +18,13 @@ validpgpkeys=()
 _kernelname=${pkgbase#linux}
 
 prepare() {
-  ln -s ${srcdir}/../linux-4.0.4 ${srcdir}
+  echo ${srcdir}
+  if [ ! -e ${srcdir}/${_srcname} ]
+  then
+    ln -s ${srcdir}/../${_srcname} ${srcdir}
+  fi
   cp ${srcdir}/../linux.preset ${srcdir}
-  cp ${srcdir}/../config ${srcdir}/.config
+  cp ${srcdir}/../config ${srcdir}/${_srcname}/.config
 }
 
 build() {
