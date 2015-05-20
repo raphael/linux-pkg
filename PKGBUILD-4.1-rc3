@@ -2,8 +2,8 @@
 # Maintainer: Tobias Powalowski <tpowa@archlinux.org>
 # Maintainer: Thomas Baechler <thomas@archlinux.org>
 
-pkgbase=tuxonice
-_srcname=tuxonice-kernel
+pkgbase=linux
+_srcname=linux-4.1-rc3
 pkgver=4.1rc3
 pkgrel=1
 arch=('i686' 'x86_64')
@@ -17,7 +17,6 @@ validpgpkeys=()
 _kernelname=${pkgbase#linux}
 
 prepare() {
-  echo ${srcdir}
   if [ ! -e ${srcdir}/${_srcname} ]
   then
     ln -s ${srcdir}/../${_srcname} ${srcdir}

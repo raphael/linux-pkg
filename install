@@ -1,0 +1,36 @@
+#!/bin/bash
+
+if [ $# -eq 0 ]
+then
+  echo 'Usage: install <SUFFIX>'
+  echo E.g.: 'install 4.1rc3'
+  exit 1
+fi
+suffix=$1
+
+# 1. Build
+makepkg --check -f -L -p PKGBUILD-$suffix
+if [ $? -ne 0 ]
+then
+  echo Package failed to build, aborting
+fi
+
+# 2. Remove old kernel packages
+sudo pacman -R --noconfirm linux-$suffix 2>/dev/null
+sudo pacman -R --noconfirm linux-$suffix-docs 2>/dev/null
+sudo pacman -R --noconfirm linux-$suffix-headers 2>/dev/null
+
+# 3. Install new kernel packages
+sudo pacman -U --noconfirm linux-$suffix-*
+sudo pacman -U --noconfirm linux-docs-$suffix-*
+sudo pacman -U --noconfirm linux-headers-$suffix-*
+
+# 4. Update grub
+sudo sh -c 'grub-mkconfig > /boot/grub/grub.cfg'
+sudo grub-install /dev/sda
+
+# 5. Cleanup
+rm linux-$suffix-*
+rm linux-docs-$suffix-*
+rm linux-headers-$suffix-*
+rm linux.install.pkg
