@@ -2,3 +2,4 @@ src
 pkg
 *.xz
 linux.install.pkg
+tuxonice-kernel

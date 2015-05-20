@@ -2,9 +2,8 @@
 # Maintainer: Tobias Powalowski <tpowa@archlinux.org>
 # Maintainer: Thomas Baechler <thomas@archlinux.org>
 
-pkgbase=linux-pix2
-#pkgbase=linux               # Build stock -ARCH kernel
-_srcname=linux-4.1-rc3
+pkgbase=tuxonice
+_srcname=tuxonice-kernel
 pkgver=4.1rc3
 pkgrel=1
 arch=('i686' 'x86_64')
