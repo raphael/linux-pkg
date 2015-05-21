@@ -19,7 +19,7 @@ _kernelname=${pkgbase#linux}
 prepare() {
   if [ ! -e ${srcdir}/${_srcname} ]
   then
-    ln -s ${srcdir}/../${_srcname} ${srcdir}
+    ln -s ${HOME}/src/${_srcname} ${srcdir}/${_srcname}
   fi
   cp ${srcdir}/../linux.preset ${srcdir}
   cp ${srcdir}/../config ${srcdir}/${_srcname}/.config

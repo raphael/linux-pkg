@@ -13,6 +13,7 @@ makepkg --check -f -L -p PKGBUILD-$suffix
 if [ $? -ne 0 ]
 then
   echo Package failed to build, aborting
+  exit 1
 fi
 
 # 2. Remove old kernel packages

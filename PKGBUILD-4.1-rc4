@@ -3,8 +3,8 @@
 # Maintainer: Thomas Baechler <thomas@archlinux.org>
 
 pkgbase=linux
-_srcname=tuxonice-kernel
-pkgver=4.1rc3
+_srcname=linux-4.1-rc4
+pkgver=4.1rc4
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -19,11 +19,7 @@ _kernelname=${pkgbase#linux}
 prepare() {
   if [ ! -e ${srcdir}/${_srcname} ]
   then
-    if [ ! -h ${srcdir}/${_srcname} ]
-    then
-      echo "ln -s ${HOME}/src/${_srcname} ${srcdir}/${_srcname}"
-      ln -s ${home}/${_srcname} ${srcdir}/${_srcname}
-    fi
+    ln -s ${HOME}/src/${_srcname} ${srcdir}/${_srcname}
   fi
   cp ${srcdir}/../linux.preset ${srcdir}
   cp ${srcdir}/../config ${srcdir}/${_srcname}/.config
@@ -50,7 +46,7 @@ _package() {
   KARCH=x86
 
   # get kernel version
-  _kernver="$(make kernelrelease)"
+  _kernver="$(make LOCALVERSION= kernelrelease)"
   _basekernel=${_kernver%%-*}
   _basekernel=${_basekernel%.*}
 
