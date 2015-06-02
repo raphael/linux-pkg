@@ -17,9 +17,9 @@ then
 fi
 
 # 2. Remove old kernel packages
-sudo pacman -R --noconfirm linux 2>/dev/null
-sudo pacman -R --noconfirm linux-docs 2>/dev/null
-sudo pacman -R --noconfirm linux-headers 2>/dev/null
+sudo pacman -R --noconfirm linux-$suffix 2>/dev/null
+sudo pacman -R --noconfirm linux-$suffix-docs 2>/dev/null
+sudo pacman -R --noconfirm linux-$suffix-headers 2>/dev/null
 
 # 3. Install new kernel packages
 sudo pacman -U --noconfirm linux-*.xz
@@ -29,5 +29,5 @@ sudo sh -c 'grub-mkconfig > /boot/grub/grub.cfg'
 sudo grub-install /dev/sda
 
 # 5. Cleanup
-rm linux-*
+#rm linux-*
 rm linux.install.pkg

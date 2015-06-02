@@ -2,7 +2,7 @@
 # Maintainer: Tobias Powalowski <tpowa@archlinux.org>
 # Maintainer: Thomas Baechler <thomas@archlinux.org>
 
-pkgbase=linux
+pkgbase=linux-4.1-rc4
 _srcname=linux-4.1-rc4
 pkgver=4.1rc4
 pkgrel=1
@@ -15,14 +15,16 @@ source=()
 sha256sums=()
 validpgpkeys=()
 _kernelname=${pkgbase#linux}
+DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
+# $srcdir is: /home/raphael/src/kernel-pkg/src
 prepare() {
   if [ ! -e ${srcdir}/${_srcname} ]
   then
     ln -s ${HOME}/src/${_srcname} ${srcdir}/${_srcname}
   fi
-  cp ${srcdir}/../linux.preset ${srcdir}
-  cp ${srcdir}/../config ${srcdir}/${_srcname}/.config
+  cp ${DIR}/linux.preset ${srcdir}
+  cp ${DIR}/config ${srcdir}/${_srcname}/.config
 }
 
 build() {

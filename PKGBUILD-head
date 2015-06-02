@@ -2,9 +2,9 @@
 # Maintainer: Tobias Powalowski <tpowa@archlinux.org>
 # Maintainer: Thomas Baechler <thomas@archlinux.org>
 
-pkgbase=linux
-_srcname=linux-4.1-rc3
-pkgver=4.1rc3
+pkgbase=linux-head
+_srcname=linux-head
+pkgver=head
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -15,6 +15,7 @@ source=()
 sha256sums=()
 validpgpkeys=()
 _kernelname=${pkgbase#linux}
+DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
 # $srcdir is: /home/raphael/src/kernel-pkg/src
 prepare() {
@@ -47,7 +48,7 @@ _package() {
   KARCH=x86
 
   # get kernel version
-  _kernver="$(make LOCALVERSION= kernelrelease)"
+  _kernver="$(make kernelrelease)"
   _basekernel=${_kernver%%-*}
   _basekernel=${_basekernel%.*}
 
